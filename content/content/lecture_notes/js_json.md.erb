@@ -1,0 +1,76 @@
+---
+title: Javascript and JSON
+---
+#### Introduction 
+Learning how to use Javascript effectively requires that we develop an understanding the effect of javascript code in its environment.  
+
+There are many popular environments for running Javascript. Some of the most popular today are:
+* client-side javascript in a webpage, e.g. jQuery, Backbone, Angular, Ember,...
+* server-side javascript, e.g. Node.js
+* mobile javascript, e.g. Phonegap/Cordova/jQueryMobile
+* desktop javascript, e.g. Rhino, V8, Spidermonkey
+
+In all of these examples, the core Javascript language is used to manipulate various kinds of data. In this note, we discuss the basic datatypes of Javascript and provide a way to think about them!
+
+#### JSON Literals
+
+The simplest model of data for Javascript is the so-called JavaScript Object Notation (JSON).  This provides a syntax for describing data that includes scalar values (integers, decimal numnbers, booleans, characters) as well as compound values (strings of characters, arrays of values, and objects. In this note we describe the JSON syntax and semantics and show how to access and modify JSON objects using Javascript.  The JSON format is one of the most common ways to send structured data between computers on the internet and is very useful on its own, independently of the Javascript language.
+
+##### Examples
+There are four basic kinds of values in JSON: scalars, strings, arrays, and objects. The scalar values are specified in the usual ways:
+
+* integers: 0,1,2,3, -5, 355, 113, ...
+* doubles: 2.718281828, 3.1415926, 0.0, -1000, 1.1e-100, 1/Infinity, NaN
+* characters: 'a',    ' ',    '%',  etc.
+* boolean values: true, false
+
+Arrays are written enclosed in square brackets with values separated by commas, e.g. 
+
+* [1,'a', 1.2]
+* []
+* ['mon', 'wed', 'fri']
+* [ [1,2,3], [2,4,6], [3,6,9]]
+
+Objects are written enclosed in curly braces and consist of key/value pairs separated by commas as usual, but where the key/value elements are separated by a colon, e.g.
+
+* {a:1, b:2, c:3}
+* {}
+* {primes:[2,3,5,7,11],  squares:[1,4,9,16,25,36], fib:[1,1,2,3,5,8,13,21]}
+* {case1:{a:1,b:2},  case2:{a:3,b:7},  case3:{a:0,b:12}}
+* {x:1, y:[11,22,33], z:{a:2,x:9}, w:{}}
+
+#### Accessing the values of JSON objects
+
+The elements of a JSON literal are accessed using the usual array index and field dot syntax.
+For example, if we define
+
+<%= code_begin %>
+demo1 = {x:1, y:[11,22,33], z:{a:2,x:9}, w:{}}
+<%= code_end %>
+
+then we can access the value of the y field using the dot notation
+<%= code_begin %>
+val1 = demo1.y
+<%= code_end %>
+
+which will set val1 to the list [11,22,33], and we can get the second element of the y list using the square bracket notation:
+
+<%= code_begin %>
+val2 = demo1.y[1]
+<%= code_end %>
+
+which will set val2 to 22. Likewise we can access the value of property x in the value of property z of demo 1 by
+
+<%= code_begin %>
+val3 = demo1.z.x
+<%= code_end %>
+
+which should set val3 to 9.
+
+Likewise, we can change the values of JSON objects using the same notation. For example, the change the x field f the z field of demo1 to 100, we would write
+
+<%= code_begin %>
+demo1.z.x = 100
+<%= code_end %>
+
+Exercise: Try creating a complex JSON object with several nested levels of lists and objects and then practice accessing and modifying different parts of that JSON object...
