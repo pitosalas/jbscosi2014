@@ -1,3 +1,5 @@
+require 'coursegen'
+
 # Copyright string
 COPYRIGHT_STRING = "Copyright (2014) Tim Hickey, Marie Meteer, Pito Salas"
 
